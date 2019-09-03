@@ -10,8 +10,8 @@ final class NoiseTests: XCTestCase {
     private let prologue = [UInt8](repeating: 0x34, count: Int.random(in: 0..<32))
     
     func testN() {
-        var initiator = Handshake<SymmetricState>(.N, .initiator, protocolName: "", prologue: prologue, their: responderStatic.publicKey)
-        var responder = Handshake<SymmetricState>(.N, .responder, protocolName: "", prologue: prologue, my: responderStatic)
+        var initiator = Handshake<SymmetricState>(.N, .initiator, prologue: prologue, their: responderStatic.publicKey)
+        var responder = Handshake<SymmetricState>(.N, .responder, prologue: prologue, my: responderStatic)
         
         let message = initiator.write(payload: payload)
         let newPayload = responder.read(message)
@@ -21,8 +21,8 @@ final class NoiseTests: XCTestCase {
     }
     
     func testK() {
-        var initiator = Handshake<SymmetricState>(.K, .initiator, protocolName: "", prologue: prologue, my: initiatorStatic, their: responderStatic.publicKey)
-        var responder = Handshake<SymmetricState>(.K, .responder, protocolName: "", prologue: prologue, my: responderStatic, their: initiatorStatic.publicKey)
+        var initiator = Handshake<SymmetricState>(.K, .initiator, prologue: prologue, my: initiatorStatic, their: responderStatic.publicKey)
+        var responder = Handshake<SymmetricState>(.K, .responder, prologue: prologue, my: responderStatic, their: initiatorStatic.publicKey)
         
         let message = initiator.write(payload: payload)
         let newPayload = responder.read(message)
@@ -32,8 +32,8 @@ final class NoiseTests: XCTestCase {
     }
     
     func testX() {
-        var initiator = Handshake<SymmetricState>(.X, .initiator, protocolName: "", prologue: prologue, my: initiatorStatic, their: responderStatic.publicKey)
-        var responder = Handshake<SymmetricState>(.X, .responder, protocolName: "", prologue: prologue, my: responderStatic)
+        var initiator = Handshake<SymmetricState>(.X, .initiator, prologue: prologue, my: initiatorStatic, their: responderStatic.publicKey)
+        var responder = Handshake<SymmetricState>(.X, .responder, prologue: prologue, my: responderStatic)
         
         let message = initiator.write(payload: payload)
         let newPayload = responder.read(message)
@@ -43,8 +43,8 @@ final class NoiseTests: XCTestCase {
     }
     
     func testNN() {
-        var initiator = Handshake<SymmetricState>(.NN, .initiator, protocolName: "", prologue: prologue)
-        var responder = Handshake<SymmetricState>(.NN, .responder, protocolName: "", prologue: prologue)
+        var initiator = Handshake<SymmetricState>(.NN, .initiator, prologue: prologue)
+        var responder = Handshake<SymmetricState>(.NN, .responder, prologue: prologue)
         
         var message = initiator.write()
         responder.read(message)
@@ -57,8 +57,8 @@ final class NoiseTests: XCTestCase {
     }
     
     func testNK() {
-        var initiator = Handshake<SymmetricState>(.NK, .initiator, protocolName: "", prologue: prologue, their: responderStatic.publicKey)
-        var responder = Handshake<SymmetricState>(.NK, .responder, protocolName: "", prologue: prologue, my: responderStatic)
+        var initiator = Handshake<SymmetricState>(.NK, .initiator, prologue: prologue, their: responderStatic.publicKey)
+        var responder = Handshake<SymmetricState>(.NK, .responder, prologue: prologue, my: responderStatic)
         
         var message = initiator.write(payload: payload)
         var newPayload = responder.read(message)
@@ -73,8 +73,8 @@ final class NoiseTests: XCTestCase {
     }
     
     func testNX() {
-        var initiator = Handshake<SymmetricState>(.NX, .initiator, protocolName: "", prologue: prologue)
-        var responder = Handshake<SymmetricState>(.NX, .responder, protocolName: "", prologue: prologue, my: responderStatic)
+        var initiator = Handshake<SymmetricState>(.NX, .initiator, prologue: prologue)
+        var responder = Handshake<SymmetricState>(.NX, .responder, prologue: prologue, my: responderStatic)
         
         var message = initiator.write()
         responder.read(message)
@@ -87,8 +87,8 @@ final class NoiseTests: XCTestCase {
     }
     
     func testKN() {
-        var initiator = Handshake<SymmetricState>(.KN, .initiator, protocolName: "", prologue: prologue, my: initiatorStatic)
-        var responder = Handshake<SymmetricState>(.KN, .responder, protocolName: "", prologue: prologue, their: initiatorStatic.publicKey)
+        var initiator = Handshake<SymmetricState>(.KN, .initiator, prologue: prologue, my: initiatorStatic)
+        var responder = Handshake<SymmetricState>(.KN, .responder, prologue: prologue, their: initiatorStatic.publicKey)
         
         var message = initiator.write()
         responder.read(message)
@@ -101,8 +101,8 @@ final class NoiseTests: XCTestCase {
     }
     
     func testKK() {
-        var initiator = Handshake<SymmetricState>(.KK, .initiator, protocolName: "", prologue: prologue, my: initiatorStatic, their: responderStatic.publicKey)
-        var responder = Handshake<SymmetricState>(.KK, .responder, protocolName: "", prologue: prologue, my: responderStatic, their: initiatorStatic.publicKey)
+        var initiator = Handshake<SymmetricState>(.KK, .initiator, prologue: prologue, my: initiatorStatic, their: responderStatic.publicKey)
+        var responder = Handshake<SymmetricState>(.KK, .responder, prologue: prologue, my: responderStatic, their: initiatorStatic.publicKey)
         
         var message = initiator.write(payload: payload)
         var newPayload = responder.read(message)
@@ -117,8 +117,8 @@ final class NoiseTests: XCTestCase {
     }
     
     func testKX() {
-        var initiator = Handshake<SymmetricState>(.KX, .initiator, protocolName: "", prologue: prologue, my: initiatorStatic)
-        var responder = Handshake<SymmetricState>(.KX, .responder, protocolName: "", prologue: prologue, my: responderStatic, their: initiatorStatic.publicKey)
+        var initiator = Handshake<SymmetricState>(.KX, .initiator, prologue: prologue, my: initiatorStatic)
+        var responder = Handshake<SymmetricState>(.KX, .responder, prologue: prologue, my: responderStatic, their: initiatorStatic.publicKey)
         
         var message = initiator.write()
         responder.read(message)
@@ -131,8 +131,8 @@ final class NoiseTests: XCTestCase {
     }
     
     func testXN() {
-        var initiator = Handshake<SymmetricState>(.XN, .initiator, protocolName: "", prologue: prologue, my: initiatorStatic)
-        var responder = Handshake<SymmetricState>(.XN, .responder, protocolName: "", prologue: prologue)
+        var initiator = Handshake<SymmetricState>(.XN, .initiator, prologue: prologue, my: initiatorStatic)
+        var responder = Handshake<SymmetricState>(.XN, .responder, prologue: prologue)
         
         var message = initiator.write()
         responder.read(message)
@@ -150,8 +150,8 @@ final class NoiseTests: XCTestCase {
     }
     
     func testXK() {
-        var initiator = Handshake<SymmetricState>(.XK, .initiator, protocolName: "", prologue: prologue, my: initiatorStatic, their: responderStatic.publicKey)
-        var responder = Handshake<SymmetricState>(.XK, .responder, protocolName: "", prologue: prologue, my: responderStatic)
+        var initiator = Handshake<SymmetricState>(.XK, .initiator, prologue: prologue, my: initiatorStatic, their: responderStatic.publicKey)
+        var responder = Handshake<SymmetricState>(.XK, .responder, prologue: prologue, my: responderStatic)
         
         var message = initiator.write(payload: payload)
         var newPayload = responder.read(message)
@@ -165,8 +165,8 @@ final class NoiseTests: XCTestCase {
     }
     
     func testXX() {
-        var initiator = Handshake<SymmetricState>(.XX, .initiator, protocolName: "", prologue: prologue, my: initiatorStatic)
-        var responder = Handshake<SymmetricState>(.XX, .responder, protocolName: "", prologue: prologue, my: responderStatic)
+        var initiator = Handshake<SymmetricState>(.XX, .initiator, prologue: prologue, my: initiatorStatic)
+        var responder = Handshake<SymmetricState>(.XX, .responder, prologue: prologue, my: responderStatic)
         
         var message = initiator.write()
         responder.read(message)
@@ -184,8 +184,8 @@ final class NoiseTests: XCTestCase {
     }
     
     func testIK() {
-        var initiator = Handshake<SymmetricState>(.IK, .initiator, protocolName: "", prologue: prologue, my: initiatorStatic, their: responderStatic.publicKey)
-        var responder = Handshake<SymmetricState>(.IK, .responder, protocolName: "", prologue: prologue, my: responderStatic)
+        var initiator = Handshake<SymmetricState>(.IK, .initiator, prologue: prologue, my: initiatorStatic, their: responderStatic.publicKey)
+        var responder = Handshake<SymmetricState>(.IK, .responder, prologue: prologue, my: responderStatic)
         
         var message = initiator.write(payload: payload)
         var newPayload = responder.read(message)

@@ -28,25 +28,16 @@ public struct Handshake<SymmetricState: SymmetricStateProtocol> {
     
     private var finished = false
     
-    public init<D>(
-        _ pattern: Pattern,
-        _ role: Role,
-        protocolName: String,
-        prologue: D,
-        my s: SecretKey? = nil,
-        their rs: PublicKey? = nil
-    ) where D: DataProtocol {
-        
+    public init<D>(_ pattern: Pattern, _ role: Role, prologue: D, my s: SecretKey? = nil, their rs: PublicKey? = nil) where D: DataProtocol {
         self.role = role
         
         self.s = s
         self.rs = rs
         
         let patternDefinition = patternDefinitions[pattern]!
+        let protocolName = "Noise_\(patternDefinition.name)_ristretto255_\(SymmetricState.name)"
         
-        let fullProtocolName = "Noise_\(patternDefinition.name)_\(protocolName)".data(using: .ascii)!
-        
-        symmetricState = SymmetricState(customization: fullProtocolName)
+        symmetricState = SymmetricState(customization: protocolName.data(using: .ascii)!)
         symmetricState.absorb(prologue)
 
         messagePatterns = patternDefinition.messagePatterns

@@ -1,6 +1,8 @@
 import Foundation
 
 public protocol SymmetricStateProtocol {
+    static var name: String { get }
+    
     var isKeyed: Bool { get }
     
     init<D>(customization: D) where D: DataProtocol

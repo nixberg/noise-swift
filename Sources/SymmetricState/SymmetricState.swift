@@ -4,6 +4,8 @@ import Noise
 import Xoodyak
 
 public struct SymmetricState {
+    public static let name = "Xoodyak"
+    
     public private(set) var isKeyed = false
     private var xoodyak: Xoodyak
 }
