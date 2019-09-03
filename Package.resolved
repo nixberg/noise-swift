@@ -1,0 +1,25 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Ristretto255",
+        "repositoryURL": "https://github.com/nixberg/ristretto255-swift",
+        "state": {
+          "branch": "master",
+          "revision": "5f347237db23daa1afcb5688449a7b05f0c86056",
+          "version": null
+        }
+      },
+      {
+        "package": "Xoodyak",
+        "repositoryURL": "https://github.com/nixberg/xoodyak-swift",
+        "state": {
+          "branch": "master",
+          "revision": "2e171d6982e5c42a7dc7ab87b8e97bb6c14653ef",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}
